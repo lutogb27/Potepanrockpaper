@@ -41,11 +41,19 @@ def acchimuite_hoi
   puts"ホイ！"
   puts "あなた：#{directions[select_number2]} 相手：#{directions[random_number2]}"
   puts"------------------------------"
-  if select_number2 == random_number2
-   true
-  else
-   false
-  end
+    #勝つ時
+  if ($result_janken == "win" && my_direction == second_randam) 
+    puts "あなたの勝ち"
+    exit
+   #負けの時
+  elsif ($result_janken == "lose" && second_randam == my_direction) 
+    puts "あなたの負け"
+    exit
+    #あいこの時
+  else # (second_randam != my_direction) || ($result_jankenA && my_direction != second_randam) ||  ($result_jankenB && second_randam != my_direction) 
+    puts "もう一度ジャンケン"
+    return janken
+  end 
 end
 
 #ゲームを連結させて、ループに回す方法
