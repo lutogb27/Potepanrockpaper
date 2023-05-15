@@ -21,16 +21,18 @@ def janken
   end
   
   number = select_number - random_number
-    if number == 0
-       puts "あいこで..."
-       return true
-    elsif number == 1 || number == -2
-       puts"あっちむいて・・・"
-       return acchimuite_hoi
-    elsif number == -1 || number == 2
-       puts "あっちむいて・・・"
-       return acchimuite_hoi
-    end  
+  if number == 0
+    puts "あいこで..."
+    return true
+  elsif number == 1 || number == -2
+    puts"あなたの勝ち"
+    puts"あっちむいて・・・"
+    return acchimuite_hoi
+  elsif number == -1 || number == 2
+    puts"あなたの負け"
+    puts"あっちむいて・・・"
+    return acchimuite_hoi
+  end  
 end
 
 def acchimuite_hoi
@@ -42,15 +44,15 @@ def acchimuite_hoi
   puts "あなた：#{directions[select_number2]} 相手：#{directions[random_number2]}"
   puts"------------------------------"
     #勝つ時
-  if ($result_janken == "win" && my_direction == second_randam) 
+  if ($result_janken == "win" && select_number2 == random_number2) 
     puts "あなたの勝ち"
-    exit
+    return false
    #負けの時
-  elsif ($result_janken == "lose" && second_randam == my_direction) 
-    puts "あなたの負け"
-    exit
+  elsif ($result_janken == "lose" && select_number2 == random_number2) 
+    puts "相手の勝ち"
+    return false
     #あいこの時
-  else # (second_randam != my_direction) || ($result_jankenA && my_direction != second_randam) ||  ($result_jankenB && second_randam != my_direction) 
+  else (select_number2 != random_number2) || ($result_janken == "win" && select_number2 != random_number2) ||  ($result_janken == "lose"  && select_number2 != random_number2) 
     puts "もう一度ジャンケン"
     return janken
   end 
