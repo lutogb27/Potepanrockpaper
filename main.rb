@@ -1,4 +1,3 @@
-require "csv" 
   puts"------------------------------"
   puts"あっち向いてホイゲームを始めます。"
   
@@ -46,15 +45,15 @@ def acchimuite_hoi
   puts "あなた：#{directions[select_number2]} 相手：#{directions[random_number2]}"
   puts"------------------------------"
     #勝つ時
-  if ($result_janken = "win" && select_number2 == random_number2) 
+  if (@janken_result == "win" && select_number2 == random_number2) 
     puts "あなたの勝ち"
     exit
    #負けの時
-  elsif ($result_janken = "lose" && select_number2 == random_number2) 
+  elsif (@janken_result == "lose" && select_number2 == random_number2) 
     puts "相手の勝ち"
     exit
     #あいこの時
-  else (select_number2 != random_number2) || ($result_janken = "win" && select_number2 != random_number2) ||  ($result_janken = "lose"  && select_number2 != random_number2) 
+  else (select_number2 != random_number2) || (@janken_result == "win" && select_number2 != random_number2) ||  (@janken_result == "lose"  && select_number2 != random_number2) 
     puts "もう一度ジャンケン"
     return janken
   end 
